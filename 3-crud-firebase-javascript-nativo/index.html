@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crud Firebase</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <div class="cajalogin">
+    <button id="logout">Logout</button>
+    <button id="login">Login</button>
+  </div>
+  <div id="datosuser"></div>
+
+  <h1>Crud Firebase</h1>
+
+  <template id="lineacontacto">
+    <tr>
+      <td>
+        <span class="lineaid"></span>
+      </td>
+      <td>
+        <i><span class="lineanombre"></span></i>
+      </td>
+      <td>
+        <span class="lineaemail"></span>
+      </td>
+      <td class="accion">
+        <button type="button" class="lineaeditar">E</button>
+      </td>
+      <td class="accion">
+        <button type="button" class="lineaborrar">X</button>
+      </td>
+    </tr>
+  </template>
+
+  <table id="listadoContactos">
+    <tr>
+      <th>id</th>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Editar</th>
+      <th>Borrar</th>
+    </tr>
+  </table>
+  <br>
+  <div class="form" id="forminsertar">
+    <h2>Insertar un elemento</h2>
+    <p>
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre">
+    </p>
+    <p>
+      <label for="email">Email</label>
+      <input type="text" id="email">
+    </p>
+    <p>
+      <input type="button" id="binsertar" value="Insertar">
+    </p>
+  </div>
+
+  <div class="form" id="formeditar">
+    <h2>Editar un elemento</h2>
+    <p>
+      <label for="nombre">Nombre</label>
+      <input type="text" id="editarnombre">
+    </p>
+    <p>
+      <label for="email">Email</label>
+      <input type="text" id="editaremail">
+    </p>
+    <p>
+      <input type="button" id="beditar" value="Editar">
+      <input type="button" id="cancelareditar" value="Cancelar">
+    </p>
+  </div>
+
+
+  <div id="mensaje"></div>
+
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+  <script src="js/inicializar.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth-firebase.js"></script>
+  <script src="js/database-firebase.js"></script>
+
+
+</body>
+</html>

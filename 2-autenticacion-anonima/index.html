@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Autenticación anónima</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <div class="cajalogin">
+    <button id="logout">Logout</button>
+    <button id="login">Login</button>
+  </div>
+  <h1>Probando autenticación anónima</h1>
+
+  <div id="datosuser"></div>
+
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAK6ZTPi-aPUoJhTggEtTW2csVzU9I371Y",
+      authDomain: "nuevo-firebase.firebaseapp.com",
+      databaseURL: "https://nuevo-firebase.firebaseio.com",
+      storageBucket: "nuevo-firebase.appspot.com",
+    };
+    firebase.initializeApp(config);
+
+    var auth = firebase.auth();
+
+    auth.onAuthStateChanged(function(usuario){
+      if(usuario) {
+        document.getElementById('logout').style.display = 'inline';
+        document.getElementById('login').style.display = 'none';
+        console.log('detecto autenticado');
+        document.getElementById('datosuser').innerHTML = 'User <span>' + usuario.uid + '</span>';
+      } else {
+        document.getElementById('logout').style.display = 'none';
+        document.getElementById('login').style.display = 'inline';
+        console.log('NO detecto autenticado');
+        document.getElementById('datosuser').innerHTML = 'No hay user <span>-</span>';
+      }
+    });
+
+    document.getElementById('logout').addEventListener('click', function(){
+      auth.signOut()
+        .then(function(){
+          console.log('el usuario ha salido');
+        });
+    });
+    document.getElementById('login').addEventListener('click', function(){
+      auth.signInAnonymously()
+        .catch(function(error){
+          console.log(error.code, error.message);
+        })
+        .then(function(user){
+          console.log("se ha autenticado", user.uid);
+        });
+    });
+
+  </script>
+</body>
+</html>

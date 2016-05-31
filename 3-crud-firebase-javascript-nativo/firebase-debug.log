@@ -1,0 +1,13 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] CLI Version:  3.0.0
+[debug] Platform:     darwin
+[debug] Node Version: v5.1.0
+[debug] Time:         Mon May 30 2016 14:50:37 GMT-0300 (BRT)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[info] Starting Firebase development server...
+[info] 
+[warn] ⚠  No Firebase project directory detected. Serving static content from /Users/midesweb/proyectos/crud-firebase
+[info] 
+[info] Server listening at: http://localhost:5000

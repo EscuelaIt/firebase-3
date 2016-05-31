@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+}
+body{
+  margin-top: 45px;
+  font-family: 'trebuchet ms', helvetica, sans-serif;
+  background-color: #f5f5f5;
+}
+h1, h2, h3 {
+  color: rgb(102, 116, 47)
+}
+h1{
+  font-size: 1.5em;
+}
+h2{
+  font-size: 1.2em;
+}
+h3{
+  font-size: 1em;
+}
+.cajalogin{
+  background-color: rgb(172, 222, 227);
+  padding: 7px 10px;
+  position: fixed;
+  top: 0;
+  left:0;
+  width: 100%;
+  margin: 0;
+  text-align: right;
+}
+.form{
+  border: 1px solid #ddd;
+  padding: 15px;
+  display: inline-block;
+}
+.form p, .form h2{
+  margin: 0 0 10px 0;
+}
+.form label{
+  width: 100px;
+  font-weight: bold;
+  color: #666;
+  display: inline-block;
+}
+#binsertar{
+  font-size: 1.1em;
+}
+#mensaje{
+  position: fixed;
+  bottom: 0;
+  margin: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 15px;
+  font-weight: bold;
+  background-color: black;
+  color: white;
+  display: none;
+}
+#datosuser{
+  margin: 10px 0 20px;
+  font-size: .9em;
+  font-family: monospace;
+  background-color: #efefef;
+  color: #999;
+  padding: 5px 15px;
+}
+#datosuser span{
+  letter-spacing: 2px;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nuevo Firebase</title>
+</head>
+<body>
+  <h1>Bienvenidos</h1>
+
+
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAPhzSJkk0qffyvrat1KXsgrAQdZolr-vE",
+      authDomain: "project-6901156122880303687.firebaseapp.com",
+      databaseURL: "https://project-6901156122880303687.firebaseio.com",
+      storageBucket: "project-6901156122880303687.appspot.com",
+    };
+    firebase.initializeApp(config);
+
+    var db = firebase.database();
+    db.ref('metadata').set({
+      app: 'videotutorial',
+      ver: '0.0.1'
+    });
+    db.ref("metadata").on('value', function(snapshot){
+      console.log(snapshot.val());
+    });
+  </script>
+
+
+
+
+</body>
+</html>
