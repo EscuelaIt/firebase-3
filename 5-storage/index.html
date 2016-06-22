@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Firebase Storage</title>
+</head>
+<body>
+  <h1>Test de Firebase Storage</h1>
+  <input type="file" id="campoarchivo">
+  <div id="mensaje"></div>
+
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAK6ZTPi-aPUoJhTggEtTW2csVzU9I371Y",
+      authDomain: "nuevo-firebase.firebaseapp.com",
+      databaseURL: "https://nuevo-firebase.firebaseio.com",
+      storageBucket: "nuevo-firebase.appspot.com",
+    };
+    firebase.initializeApp(config);
+
+    // Servicios de APIs Firebase
+    var authService = firebase.auth();
+    var storageService = firebase.storage();
+
+    window.onload = function() {
+      // asociamos el manejador de eventos sobre el INPUT FILE
+      document.getElementById('campoarchivo').addEventListener('change', function(evento){
+        evento.preventDefault();
+        var archivo  = evento.target.files[0];
+        subirArchivo(archivo);
+      });
+
+      authService.signInAnonymously()
+        .catch(function(error) {
+          console.error('Detectado error de autenticación', error);
+        });
+    }
+
+    function subirArchivo(archivo){
+      var ref = storageService.ref('micarpeta').child(archivo.name);
+      var uploadTask = ref.put(archivo);
+
+      uploadTask.on('state_changed', null,
+        function(error){
+          console.log('Error al subir el archivo', error);
+        }, function(){
+          console.log(uploadTask.snapshot);
+          mensajeFinalizado(uploadTask.snapshot.downloadURL, uploadTask.snapshot.totalBytes);
+        });
+    }
+
+    function mensajeFinalizado(url, bytes) {
+      var elMensaje = document.getElementById('mensaje');
+      var textoMensaje = '<p>Subido el archivo!';
+      textoMensaje += '<br>Bytes subidos: ' + bytes;
+      textoMensaje += '<br><a href="' + url + '">Ver el fichero</a></p>';
+      elMensaje.innerHTML = textoMensaje;
+    }
+  </script>
+</body>
+</html>

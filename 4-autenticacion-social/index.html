@@ -24,12 +24,28 @@
     };
     firebase.initializeApp(config);
 
+    var auth = firebase.auth();
 
-    // AUTENTICACIÓN
     var provider = new firebase.auth.FacebookAuthProvider();
     provider.addScope('email');
 
-    var auth = firebase.auth();
+    document.getElementById('authFB').addEventListener('click', function(){
+      auth.signInWithPopup(provider)
+        .then(function(result){
+          console.log(result);
+        })
+        .catch(function(error){
+          console.log(error.code, "-----", error.message);
+        })
+    });
+
+
+    document.getElementById('logout').addEventListener('click', function(){
+      auth.signOut()
+        .then(function(){
+          console.log('el usuario ha salido');
+        });
+    });
 
     auth.onAuthStateChanged(function(usuario){
       if(usuario) {
@@ -44,25 +60,6 @@
         document.getElementById('datosuser').innerHTML = 'No hay user <span>-</span>';
       }
     });
-
-    document.getElementById('authFB').addEventListener('click', function(){
-      auth.signInWithPopup(provider)
-      .then(function(result){
-        console.log(result);
-      })
-      .catch(function(error){
-        console.log(error.message, error.code);
-      });
-    });
-
-    document.getElementById('logout').addEventListener('click', function(){
-      auth.signOut()
-        .then(function(){
-          console.log('el usuario ha salido');
-        });
-    });
-
-
   </script>
 
 </body>
